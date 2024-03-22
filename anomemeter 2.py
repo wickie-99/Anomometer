@@ -32,7 +32,6 @@ l_num = 0.01
 s_num = 10.6 * 10**-8
 Too_num = 300
 
-eq_Q1
 v_max = 50
 I_max = 0.2
 w_max = 2
@@ -56,13 +55,10 @@ for temp in np.linspace(313,327,T_step):
         wid = width * 10**-3
         thickness = wid/1000
         Re_num = prop[0]*v_max*wid/prop[1]
-        Nu_num = Nu_cal(Re_num,prop[3])
-        print(Nu_num)
-        
+        Nu_num = Nu_cal(Re_num,prop[3])       
         values_3 = {Nu:Nu_num, Re:Re_num, Ts:temp, t:thickness, w:wid}
         eq_Err = eq_Q1.rhs - eq_Q2.rhs
         Error_temp = abs(eq_Err.subs(values_1).subs(values_2).subs(values_3))
-        print(Error_temp)
         if Error_temp< Error:
             W = width
             temperature = temp
