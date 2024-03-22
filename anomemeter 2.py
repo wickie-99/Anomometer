@@ -44,11 +44,11 @@ Error = 10**10
 W = 0
 temperature = 0
 
-T_step = int((327-312)/temp_acc)
+T_step = int((328-312)/temp_acc)
 w_step = int(2/w_acc)
 
 
-for temp in np.linspace(313,327,T_step):
+for temp in np.linspace(313,328,T_step):
     prop = property(temp)
     values_2 = {k:prop[2], mu:prop[1], rho: prop[0], Pr:prop[3]}
     for width in np.linspace(0.1,2,w_step):

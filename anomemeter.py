@@ -45,6 +45,8 @@ eq_Q2 = sp.Eq(Q2, (k/d)*C*(Re**m)*(Pr**n)*((Pr/Prs)**(1/4))*(sp.pi*d*l)*(Ts-Too)
 l_num = 0.01
 s_num = 10.6 * 10**-8
 Too_num = 300
+
+eq_sensitivity
 v_max = 50
 I_max = 0.2
 
@@ -63,7 +65,7 @@ Re_min -= 1
 print(Re_min)
 min_diameters = []
 
-for Temp in range(312,327):
+for Temp in range(313,327):
     prop = property(Temp)
     values = {Re:Re_min, rho:prop[0],v:v_max, mu:prop[1]}
     d_min = sp.solve(eq_Re.subs(values),d)
@@ -80,11 +82,11 @@ Error = 10**10
 diameter = 0
 temperature = 0
 
-T_step = int((327-312)/temp_acc)
+T_step = int((328-312)/temp_acc)
 d_step = int((50-d_min+1)/dia_acc)
 
 
-for temp in np.linspace(313,327,T_step):
+for temp in np.linspace(313,328,T_step):
     prop = property(temp)
     values_2 = {k:prop[2], mu:prop[1], rho: prop[0], Pr:prop[3], Prs:prop[4]}
     for dia in np.linspace(d_min,50,d_step):
